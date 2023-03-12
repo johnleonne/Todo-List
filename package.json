@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "react-scripts test --runInBand --detectOpenHandles --verbose",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:coverage:json": "react-scripts test --coverage --coverageReporters=\"json-summary\" --watchAll=false --testFailureExitCode=0 --detectOpenHandles --runInBand --forceExit"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -14,11 +17,15 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "13.5.0",
     "@trybe/eslint-config-frontend": "^1.8.3",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "jest": "^27.5.1",
+    "react-scripts": "^5.0.1",
     "vite": "^4.1.0"
   }
 }
