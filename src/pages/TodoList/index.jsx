@@ -36,7 +36,12 @@ function TodoList() {
   const toggleTaskDone = (id) => {
     setListTasks((prevListTasks) => prevListTasks.map((task) => {
       if (task.id === id) {
-        return { ...task, done: !task.done };
+        const updatedTask = { ...task, done: !task.done };
+        localStorage.setItem(
+          'tasks',
+          JSON.stringify(prevListTasks.map((t) => (t.id === id ? updatedTask : t))),
+        );
+        return updatedTask;
       }
       return task;
     }));
