@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { List } from '@mui/material';
 import Task from '../Tasks';
 
 function TaskList({ listTasks, removeTask, toggleTaskDone, editTask }) {
   return (
-    <ul>
+    <List sx={ { width: '100%' } }>
       {listTasks.map((task) => (
         <Task
           key={ task.id }
@@ -14,7 +15,7 @@ function TaskList({ listTasks, removeTask, toggleTaskDone, editTask }) {
           editTask={ editTask }
         />
       ))}
-    </ul>
+    </List>
   );
 }
 
