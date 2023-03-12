@@ -29,6 +29,15 @@ function TodoList() {
     }));
   };
 
+  const editTask = (id, newDescription) => {
+    setListTasks((prevListTasks) => prevListTasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, description: newDescription };
+      }
+      return task;
+    }));
+  };
+
   return (
     <>
       <TaskForm addTask={ addTask } />
@@ -36,6 +45,7 @@ function TodoList() {
         listTasks={ listTasks }
         removeTask={ removeTask }
         toggleTaskDone={ toggleTaskDone }
+        editTask={ editTask }
       />
     </>
   );
