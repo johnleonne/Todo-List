@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Task from '../Tasks';
 
-function TaskList({ listTasks, removeTask }) {
+function TaskList({ listTasks, removeTask, toggleTaskDone }) {
   return (
     <ul>
       {listTasks.map((task) => (
@@ -10,6 +10,7 @@ function TaskList({ listTasks, removeTask }) {
           key={ task.id }
           task={ task }
           removeTask={ removeTask }
+          toggleTaskDone={ toggleTaskDone }
         />
       ))}
     </ul>
@@ -27,4 +28,5 @@ TaskList.propTypes = {
     }).isRequired,
   ).isRequired,
   removeTask: PropTypes.func.isRequired,
+  toggleTaskDone: PropTypes.func.isRequired,
 };

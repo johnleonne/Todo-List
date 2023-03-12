@@ -20,10 +20,23 @@ function TodoList() {
     setListTasks(listTasks.filter((task) => task.id !== id));
   };
 
+  const toggleTaskDone = (id) => {
+    setListTasks((prevListTasks) => prevListTasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, done: !task.done };
+      }
+      return task;
+    }));
+  };
+
   return (
     <>
       <TaskForm addTask={ addTask } />
-      <TaskList listTasks={ listTasks } removeTask={ removeTask } />
+      <TaskList
+        listTasks={ listTasks }
+        removeTask={ removeTask }
+        toggleTaskDone={ toggleTaskDone }
+      />
     </>
   );
 }
