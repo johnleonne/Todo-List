@@ -12,8 +12,13 @@
     "test:coverage:json": "react-scripts test --coverage --coverageReporters=\"json-summary\" --watchAll=false --testFailureExitCode=0 --detectOpenHandles --runInBand --forceExit"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "styled-components": "^5.3.8",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
