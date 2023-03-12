@@ -27,6 +27,10 @@ function TodoList() {
 
   const removeTask = (id) => {
     setListTasks(listTasks.filter((task) => task.id !== id));
+    localStorage.setItem(
+      'tasks',
+      JSON.stringify(listTasks.filter((task) => task.id !== id)),
+    );
   };
 
   const toggleTaskDone = (id) => {
