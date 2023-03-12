@@ -41,7 +41,12 @@ function TodoList() {
   const editTask = (id, newDescription) => {
     setListTasks((prevListTasks) => prevListTasks.map((task) => {
       if (task.id === id) {
-        return { ...task, description: newDescription };
+        const updatedTask = { ...task, description: newDescription };
+        localStorage.setItem(
+          'tasks',
+          JSON.stringify(prevListTasks.map((t) => (t.id === id ? updatedTask : t))),
+        );
+        return updatedTask;
       }
       return task;
     }));
