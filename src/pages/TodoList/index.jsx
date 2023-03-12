@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TaskForm from '../../components/TaskForm';
@@ -39,7 +40,7 @@ function TodoList() {
   };
 
   return (
-    <>
+    <Container maxWidth="md">
       <TaskForm addTask={ addTask } />
       <TaskList
         listTasks={ listTasks }
@@ -47,7 +48,7 @@ function TodoList() {
         toggleTaskDone={ toggleTaskDone }
         editTask={ editTask }
       />
-    </>
+    </Container>
   );
 }
 
