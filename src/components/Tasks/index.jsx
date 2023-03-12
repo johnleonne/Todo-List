@@ -4,6 +4,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import {
   Container,
   Checkbox,
@@ -15,9 +17,18 @@ import {
   Divider,
 } from '@mui/material';
 
-function Task({ task, removeTask, toggleTaskDone, editTask }) {
+function Task({ task, removeTask, toggleTaskDone, editTask, moveTaskUp, moveTaskDown }) {
   const [editing, setEditing] = useState(false);
   const [newDescription, setNewDescription] = useState(task.description);
+  const [hovering, setHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovering(false);
+  };
 
   const handleRemoveTask = () => {
     removeTask(task.id);
@@ -36,6 +47,12 @@ function Task({ task, removeTask, toggleTaskDone, editTask }) {
     setEditing(false);
   };
 
+  const handleSalveEditEnter = (event) => {
+    if (event.key === 'Enter') {
+      handleSalveEditClick();
+    }
+  };
+
   const handleCancelEditClick = () => {
     setNewDescription(task.description);
     setEditing(false);
@@ -45,81 +62,114 @@ function Task({ task, removeTask, toggleTaskDone, editTask }) {
     setNewDescription(value);
   };
 
-  return (
-    <Paper>
-      <ListItem sx={ { margin: '8px 0 ' } }>
-        <Checkbox
-          edge="start"
-          checked={ task.done }
-          onChange={ handleCheckTask }
-          color="default"
-          sx={ {
-            margin: '0 8px',
-          } }
-          disabled={ !!editing }
-        />
+  const handleMoveTaskUp = () => {
+    moveTaskUp(task.id);
+  };
 
-        {editing ? (
-          <>
-            <TextField
-              id="standard-basic"
-              label="Edite a sua tarefa"
-              variant="standard"
-              value={ newDescription }
-              onChange={ handleNewDescription }
+  const handleMoveTaskDown = () => {
+    moveTaskDown(task.id);
+  };
+
+  return (
+    <div style={ { display: 'flex' } }>
+      <div style={ { minWidth: '100%' } }>
+        <Paper>
+          <ListItem sx={ { margin: '8px 0 ' } }>
+            <Checkbox
+              edge="start"
+              checked={ task.done }
+              onChange={ handleCheckTask }
+              color="default"
               sx={ {
-                minWidth: '80%',
+                margin: '0 8px',
               } }
+              disabled={ !!editing }
             />
 
-            <Container
-              sx={ {
-                display: 'flex',
-                justifyContent: 'space-between',
-              } }
-            >
-              <IconButton aria-label="cancel" onClick={ handleCancelEditClick }>
-                <CancelIcon />
-              </IconButton>
+            {editing ? (
+              <>
+                <TextField
+                  id="standard-basic"
+                  label="Edite a sua tarefa"
+                  variant="standard"
+                  value={ newDescription }
+                  onChange={ handleNewDescription }
+                  onKeyDown={ handleSalveEditEnter }
+                  sx={ {
+                    minWidth: '80%',
+                  } }
+                />
 
-              <Divider orientation="vertical" variant="middle" flexItem />
+                <Container
+                  sx={ {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  } }
+                >
+                  <IconButton aria-label="cancel" onClick={ handleCancelEditClick }>
+                    <CancelIcon />
+                  </IconButton>
 
-              <IconButton aria-label="save" onClick={ handleSalveEditClick }>
-                <CheckCircleIcon />
-              </IconButton>
-            </Container>
-          </>
-        ) : (
-          <>
-            <ListItemText
-              style={ {
-                minWidth: '80%',
-                textDecoration: task.done ? 'line-through' : 'none',
-                opacity: task.done ? '0.2' : '1',
-              } }
-            >
-              {task.description}
-            </ListItemText>
-            <Container
-              sx={ {
-                display: 'flex',
-                justifyContent: 'space-between',
-              } }
-            >
-              <IconButton aria-label="edit" onClick={ handleEditTask }>
-                <EditIcon />
-              </IconButton>
+                  <Divider orientation="vertical" variant="middle" flexItem />
 
-              <Divider orientation="vertical" variant="middle" flexItem />
+                  <IconButton aria-label="save" onClick={ handleSalveEditClick }>
+                    <CheckCircleIcon />
+                  </IconButton>
+                </Container>
+              </>
+            ) : (
+              <>
+                <ListItemText
+                  style={ {
+                    minWidth: '80%',
+                    textDecoration: task.done ? 'line-through' : 'none',
+                    opacity: task.done ? '0.2' : '1',
+                  } }
+                >
+                  {task.description}
+                </ListItemText>
 
-              <IconButton aria-label="delete" onClick={ handleRemoveTask }>
-                <DeleteForeverIcon />
-              </IconButton>
-            </Container>
-          </>
-        )}
-      </ListItem>
-    </Paper>
+                <Container
+                  sx={ {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  } }
+                >
+                  <IconButton aria-label="edit" onClick={ handleEditTask }>
+                    <EditIcon />
+                  </IconButton>
+
+                  <Divider orientation="vertical" variant="middle" flexItem />
+
+                  <IconButton aria-label="delete" onClick={ handleRemoveTask }>
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </Container>
+              </>
+            )}
+          </ListItem>
+        </Paper>
+      </div>
+      <div
+        onMouseEnter={ handleMouseEnter }
+        onMouseLeave={ handleMouseLeave }
+        style={ {
+          opacity: hovering ? '0.6' : '0.1',
+          marginLeft: '8px',
+          transition: 'opacity 0.5s ease-in-out',
+        } }
+      >
+        <IconButton aria-label="move-up" onClick={ handleMoveTaskUp }>
+          <ArrowUpwardIcon fontSize="small" />
+        </IconButton>
+
+        <Divider orientation="horizontal" variant="middle" flexItem />
+
+        <IconButton aria-label="move-down" onClick={ handleMoveTaskDown }>
+          <ArrowDownwardIcon fontSize="small" />
+        </IconButton>
+      </div>
+    </div>
   );
 }
 
@@ -134,4 +184,6 @@ Task.propTypes = {
   removeTask: PropTypes.func.isRequired,
   toggleTaskDone: PropTypes.func.isRequired,
   editTask: PropTypes.func.isRequired,
+  moveTaskUp: PropTypes.func.isRequired,
+  moveTaskDown: PropTypes.func.isRequired,
 };

@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { List } from '@mui/material';
 import Task from '../Tasks';
 
-function TaskList({ listTasks, removeTask, toggleTaskDone, editTask }) {
+function TaskList({
+  listTasks,
+  removeTask,
+  toggleTaskDone,
+  editTask,
+  moveTaskUp,
+  moveTaskDown,
+}) {
   return (
     <List sx={ { width: '100%' } }>
       {listTasks.map((task) => (
@@ -13,6 +20,8 @@ function TaskList({ listTasks, removeTask, toggleTaskDone, editTask }) {
           removeTask={ removeTask }
           toggleTaskDone={ toggleTaskDone }
           editTask={ editTask }
+          moveTaskUp={ moveTaskUp }
+          moveTaskDown={ moveTaskDown }
         />
       ))}
     </List>
@@ -32,4 +41,6 @@ TaskList.propTypes = {
   removeTask: PropTypes.func.isRequired,
   toggleTaskDone: PropTypes.func.isRequired,
   editTask: PropTypes.func.isRequired,
+  moveTaskUp: PropTypes.func.isRequired,
+  moveTaskDown: PropTypes.func.isRequired,
 };

@@ -61,6 +61,28 @@ function TodoList() {
     }));
   };
 
+  const moveTaskUp = (id) => {
+    const index = listTasks.findIndex((task) => task.id === id);
+    if (index > 0) {
+      const newTasks = [...listTasks];
+      newTasks[index] = listTasks[index - 1];
+      newTasks[index - 1] = listTasks[index];
+      setListTasks(newTasks);
+      localStorage.setItem('tasks', JSON.stringify(newTasks));
+    }
+  };
+
+  const moveTaskDown = (id) => {
+    const index = listTasks.findIndex((task) => task.id === id);
+    if (index < listTasks.length - 1) {
+      const newTasks = [...listTasks];
+      newTasks[index] = listTasks[index + 1];
+      newTasks[index + 1] = listTasks[index];
+      setListTasks(newTasks);
+      localStorage.setItem('tasks', JSON.stringify(newTasks));
+    }
+  };
+
   return (
     <Container maxWidth="md">
       <TaskForm addTask={ addTask } />
@@ -69,6 +91,8 @@ function TodoList() {
         removeTask={ removeTask }
         toggleTaskDone={ toggleTaskDone }
         editTask={ editTask }
+        moveTaskUp={ moveTaskUp }
+        moveTaskDown={ moveTaskDown }
       />
     </Container>
   );
