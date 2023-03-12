@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import TaskForm from '../../components/TaskForm';
+import TaskList from '../../components/TaskList';
 
 function TodoList() {
+  const [listTasks, setListTasks] = useState([]);
+
+  const addTask = (description) => {
+    const newTask = {
+      id: uuidv4(),
+      description,
+      done: false,
+    };
+
+    setListTasks([...listTasks, newTask]);
+  };
+
   return (
     <>
-      <h1>Lista de Tarefas</h1>
-      <input
-        type="text"
-        id="AddTask"
-        placeholder="adicione uma tarefa"
-      />
-      <button type="button">Adicionar</button>
+      <TaskForm addTask={ addTask } />
+      <TaskList listTasks={ listTasks } />
     </>
   );
 }
