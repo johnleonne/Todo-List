@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Task({ task }) {
+function Task({ task, removeTask }) {
+  const handleRemoveTask = () => {
+    removeTask(task.id);
+  };
+
   return (
     <li>
       <input type="checkbox" />
       <span>{task.description}</span>
       <div>
         <button type="button"> editar</button>
-        <button type="button"> remover</button>
+        <button type="button" onClick={ handleRemoveTask }>
+          remover
+        </button>
       </div>
     </li>
   );
@@ -22,4 +28,5 @@ Task.propTypes = {
     description: PropTypes.string.isRequired,
     done: PropTypes.bool.isRequired,
   }).isRequired,
+  removeTask: PropTypes.func.isRequired,
 };
