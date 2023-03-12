@@ -1,11 +1,18 @@
 import { Container } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TaskForm from '../../components/TaskForm';
 import TaskList from '../../components/TaskList';
 
 function TodoList() {
   const [listTasks, setListTasks] = useState([]);
+
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (storedTasks) {
+      setListTasks(storedTasks);
+    }
+  }, []);
 
   const addTask = (description) => {
     const newTask = {
@@ -15,6 +22,7 @@ function TodoList() {
     };
 
     setListTasks([...listTasks, newTask]);
+    localStorage.setItem('tasks', JSON.stringify([...listTasks, newTask]));
   };
 
   const removeTask = (id) => {
