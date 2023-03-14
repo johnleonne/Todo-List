@@ -1,6 +1,10 @@
 # Lista de tarefas (todo list)
 
-Este é um aplicativo de lista de tarefas (todo list) criado com React, iniciado pelo Vite e personalizado com o Material UI. O aplicativo permite adicionar, marcar como concluída, editar, excluir e mover a ordem das tarefas para cima ou para baixo.
+Este é um aplicativo de lista de tarefas (todo-list) criado com React, iniciado pelo Vite e personalizado com o Material UI. O aplicativo permite que os usuários gerenciem suas tarefas de forma fácil e organizada, com recursos para adicionar novas tarefas, marcar como concluídas, editar, excluir e reordenar a lista.
+
+O aplicativo também possui um tema de modo automático que se adapta ao tema do sistema operacional do usuário, tornando a experiência de uso ainda mais agradável.
+
+Com uma interface moderna e intuitiva, o aplicativo é fácil de usar e pode ser personalizado com facilidade para atender às suas necessidades específicas.
 
 
 ## Como instalar e executar
@@ -46,8 +50,10 @@ Este aplicativo de lista de tarefas possui um tema automático, que é definido 
 
 Essa funcionalidade foi implementada com a ajuda do Material-UI e pode ser vista em ação no aplicativo. O tema automático é uma maneira fácil de garantir que o aplicativo tenha uma aparência consistente com o sistema operacional do usuário, independentemente das preferências de tema do usuário.
 
+### Lista de tarefas em light mode
 ![Lista de tarefas em light mode](https://user-images.githubusercontent.com/99990084/224863391-808c094f-2b2e-44d8-8384-9ff2cbe53f22.jpeg)
 
+### Lista de tarefas em dark mode
 ![Lista de tarefas em Dark mode](https://user-images.githubusercontent.com/99990084/224863486-866e1308-03c5-46cb-babd-8b131d8c3575.jpeg)
 
 ## Como contribuir
