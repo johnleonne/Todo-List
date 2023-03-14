@@ -32,7 +32,7 @@ O aplicativo será executado em http://localhost:5173
 
 ### Como acessar o aplicativo hospedado
 
-Você pode acessar o aplicativo hospedado no Vercel no seguinte link: [Lista de Tarefas](https://todo-list-rose-psi.vercel.app/)
+Você pode acessar o aplicativo hospedado no Vercel no seguinte link: [https://todo-list-rose-psi.vercel.app/](https://todo-list-rose-psi.vercel.app/)
 
 
 ## Como usar
