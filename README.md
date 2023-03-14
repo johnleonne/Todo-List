@@ -30,7 +30,7 @@ npm run dev
 
 O aplicativo será executado em http://localhost:5173
 
-###Como acessar o aplicativo hospedado
+### Como acessar o aplicativo hospedado
 
 Você pode acessar o aplicativo hospedado no Vercel no seguinte link: [Lista de Tarefas](https://todo-list-rose-psi.vercel.app/)
 
