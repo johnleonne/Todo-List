@@ -40,6 +40,16 @@ O aplicativo será executado em http://localhost:5173
 5. Mova uma tarefa: clique no botão de seta (ícone de seta pra cima ou pra baixo) ao lado da tarefa.
 
 
+## Tema automático do sistema
+
+Este aplicativo de lista de tarefas possui um tema automático, que é definido de acordo com as configurações de tema do sistema operacional do usuário. Isso significa que, se o sistema operacional do usuário estiver configurado para usar um tema claro, o aplicativo usará um tema claro. Se o sistema operacional estiver configurado para usar um tema escuro, o aplicativo usará um tema escuro.
+
+Essa funcionalidade foi implementada com a ajuda do Material-UI e pode ser vista em ação no aplicativo. O tema automático é uma maneira fácil de garantir que o aplicativo tenha uma aparência consistente com o sistema operacional do usuário, independentemente das preferências de tema do usuário.
+
+![Lista de tarefas em light mode](https://user-images.githubusercontent.com/99990084/224863391-808c094f-2b2e-44d8-8384-9ff2cbe53f22.jpeg)
+
+![Lista de tarefas em Dark mode](https://user-images.githubusercontent.com/99990084/224863486-866e1308-03c5-46cb-babd-8b131d8c3575.jpeg)
+
 ## Como contribuir
 
 Este projeto é open source e qualquer pessoa pode contribuir. Para contribuir, siga estas etapas:
