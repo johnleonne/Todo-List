@@ -84,7 +84,7 @@ function TodoList() {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container className="todo-list-container" maxWidth="md">
       <TaskForm addTask={ addTask } />
       <TaskList
         listTasks={ listTasks }

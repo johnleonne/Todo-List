@@ -96,11 +96,14 @@ function Task({ task, removeTask, toggleTaskDone, editTask, moveTaskUp, moveTask
                   onChange={ handleNewDescription }
                   onKeyDown={ handleSalveEditEnter }
                   sx={ {
-                    minWidth: '80%',
+                    width: '100%',
                   } }
                 />
 
                 <Container
+                  style={ {
+                    maxWidth: '90px',
+                  } }
                   sx={ {
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -121,7 +124,7 @@ function Task({ task, removeTask, toggleTaskDone, editTask, moveTaskUp, moveTask
               <>
                 <ListItemText
                   style={ {
-                    minWidth: '80%',
+                    width: '100%',
                     textDecoration: task.done ? 'line-through' : 'none',
                     opacity: task.done ? '0.2' : '1',
                   } }
@@ -130,6 +133,9 @@ function Task({ task, removeTask, toggleTaskDone, editTask, moveTaskUp, moveTask
                 </ListItemText>
 
                 <Container
+                  style={ {
+                    maxWidth: '90px',
+                  } }
                   sx={ {
                     display: 'flex',
                     justifyContent: 'space-between',

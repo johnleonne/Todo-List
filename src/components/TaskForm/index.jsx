@@ -20,11 +20,17 @@ function TaskForm({ addTask }) {
   return (
     <Paper sx={ { textAlign: 'center', padding: '24px', margin: '12px 0 ' } }>
       <form onSubmit={ handleSubmit }>
-        <Typography variant="h4" style={ { marginBottom: '12px' } }>
+        <Typography
+          className="title-form"
+          variant="h4"
+          style={ { marginBottom: '12px' } }
+        >
           Lista de Tarefas
         </Typography>
         <Container sx={ { display: 'flex', justifyContent: 'center' } }>
           <TextField
+            className="input-form "
+            size="small"
             id="outlined-basic"
             label="Adicione uma tarefa"
             variant="outlined"
@@ -34,6 +40,7 @@ function TaskForm({ addTask }) {
           />
 
           <Button
+            className="btn-add-form"
             type="submit"
             variant="text"
             sx={ { marginLeft: '12px', padding: '0 24px ' } }
